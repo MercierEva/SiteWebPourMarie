@@ -1,0 +1,7 @@
+// Import the file of the @media rules to include a block of CSS properties
+@import "rules";
+
+//file describe reusable rules
+@import "generalities";
+@import "navbar";
+@import "admin";

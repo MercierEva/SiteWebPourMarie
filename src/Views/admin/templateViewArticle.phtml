@@ -1,0 +1,9 @@
+<h2><?php echo $article[0]['postTitle'] ?></h2>
+<em><?php echo $article[0]['postDesc'] ?></em>
+<p><?php echo $article[0]['postCont'] ?></p>
+
+<?php if (isset($article[0]['postSrc'])): ?>
+<img src="<?php echo htmlentities($article[0]['postSrc']) ?>" alt="<?php echo htmlentities($article[0]['postImgName'])?>" />
+<?php endif; ?>
+
+<a href="index.php?action=auth&q=<?php echo htmlentities($_GET['q'])?>&opt=getAll" >Retour</a>

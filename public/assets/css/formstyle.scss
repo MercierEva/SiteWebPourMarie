@@ -1,0 +1,44 @@
+/* 
+        Form Stylisting 
+================================*/
+.formAuth {
+    font-family: $font-family;
+    font-size: calc(1em + .5vw);
+    color: $text-header-color;
+    
+    background-color: $bg-header-color;
+    border-radius: 2px;
+    
+    &__legend {
+        padding: .2em;
+    
+        color: $text-header-color;
+    
+        background-color: $bg-header-color;
+    }
+    
+    &__error {
+        font-size: calc(.5em + .5vw);
+        color: $error-color;
+    }
+    
+    &__group {
+        display: flex;
+        flex-direction: column;
+        
+        & label {
+            margin: .5em 0;
+        }
+        & a {
+            text-align: center;
+            text-decoration: none;
+        }
+        & input {
+            height: 1.5em;
+        }
+        & input[type='submit']{
+            width: 25vw;
+            margin: 0 auto 1em auto;
+        }
+    }
+}
