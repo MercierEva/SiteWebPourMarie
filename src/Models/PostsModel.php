@@ -15,7 +15,32 @@ class PostsModel extends Model {
     private $cont;
     
     public function __construct($dataError){
-        $this->setCatId(substr($_GET['q'],0,-5));
+        if (isset($_GET['q'])) {
+            switch(substr($_GET['q'], 0, -5)){
+                case "About" :
+                    $this->setCatId("A propos");
+                    break;
+                case "Services" :
+                    $this->setCatId("Services");
+                    break;
+                case "Test" :
+                    $this->setCatId("Témoignages");
+                    break;
+            }
+        } else {
+            switch($_GET['action'])
+            {
+                case "About":
+                    $this->setCatId("A propos");
+                    break;
+                case "Services":
+                    $this->setCatId("Services");
+                    break;
+                case "Test":
+                    $this->setCatId("Témoignages");
+                    break;
+            }
+        }
         parent::__construct($dataError);
     }
     
@@ -113,11 +138,14 @@ class PostsModel extends Model {
                     empty($_POST["postImgName"])){
                     $model->dataError['error-file'] = 'Un nom est nécessaire pour
                         l\'image et te permet de la retrouver';
+                    var_dump('1');
                 } else {
                     $this->addElement($model);
+                    var_dump('2');
                 }
             } else {
                 $this->createPost($model);
+                var_dump('3');
             }
         }
        
@@ -207,24 +235,20 @@ class PostsModel extends Model {
             $queryResults = $queryInstance->prepareAndExecuteQuery(
                 "SELECT postId, postTitle, postDesc, postCont,
                     pseudo as postAuthor, postDate, tb_pictures.name
-                    as postImgName, url as postSrc, tb_categories.name 
+                    as postImgName, url as postSrc
                     FROM tb_posts
                     INNER JOIN tb_users ON tb_users_id = tb_users.id
                     INNER JOIN tb_pictures ON tb_pictures_id = tb_pictures.id
-                    INNER JOIN tb_categories ON 
-                    tb_posts.tb_categories_id=tb_categories.id 
-                    WHERE postId = ? AND tb_categories.id = ?",
-                    array($postId, $this->getCatId())
+                    WHERE postId = ?",
+                    array($postId)
                 );
         } else {
             $queryResults = $queryInstance->prepareAndExecuteQuery(
                 "SELECT postId, postTitle, postDesc, postCont, pseudo as
-                    postAuthor, postDate, tb_categories.name FROM tb_posts
+                    postAuthor, postDate FROM tb_posts
                     INNER JOIN tb_users ON tb_users_id = tb_users.id
-                    INNER JOIN tb_categories ON
-                    tb_posts.tb_categories_id=tb_categories.id 
-                    WHERE postId = ? AND tb_categories.id = ?",
-                    array($postId, $this->getCatId())
+                    WHERE postId = ?",
+                    array($postId)
                 );
         }
         return $queryResults;

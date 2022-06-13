@@ -4,20 +4,23 @@
     <meta charset='UTF-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marie Pichault Sophrologue</title>
+    <title>Marie Puchault Sophrologue</title>
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
-    <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <link rel="stylesheet" href="./assets/css/common/normalize.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
 </head>
 <body class="container">
     <header class="header">
@@ -33,15 +36,26 @@
           <span></span>
         </label>
         <ul class="navbar__nav">
-            <li><a href="index.php?action=welcome">Accueil</a></li>
-            <li><a href="index.php?action=about">A propos</a></li>
-            <li><a href="index.php?action=blog">Galerie</a></li>
-            <li><a href="index.php?action=services">Mes services</a></li>
-            <li><a href="index.php?action=test">Témoignages</a></li>
+            <li><a href="index.php?action=Welcome">Accueil</a></li>
+            <li><a href="index.php?action=Services">Mes services</a></li>
+            <li><a href="index.php?action=Test">Témoignages</a></li>
+            <li><a href="index.php?action=About">A propos</a></li>
         </ul>
     </nav>
     <main>
         <?= $content ?>
     </main>
+    <footer class="footer">
+        <section class="footer__contact">
+            <address>
+                <h2>Contactez-moi</h2>
+                3 rue de la vigne <br> 35460 St Etienne en Cogles (Maen Roch)<br><br>
+                <a href="mailto:marie.puchault@outlook.fr">marie.puchault@outlook.fr</a><br>
+                <a href="tel:+33617712335">06.17.71.23.35</a>
+            </address>
+            <div id="map"></div>
+        </section>
+    </footer>
+    <script type="module" src='./assets/js/streetmap.js'></script>
 </body>
 </html>

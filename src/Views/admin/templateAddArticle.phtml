@@ -1,51 +1,67 @@
-<form action='' method='POST' accept-charset="UTF-8"  enctype="multipart/form-data">
-    <label for="postTitle">Titre</label><br>
-    <input type='text' name='postTitle' 
-        value='<?= (isset($_GET['id'])) ? $article[0]['postTitle'] : '' ?>'><br>
+<form class="formAuth" action='' method='POST' accept-charset="UTF-8"  enctype="multipart/form-data">
+    <div class="formAuth__group">
+        <label for="postTitle">Titre</label><br>
+        <input type='text' name='postTitle' 
+            value='<?= (isset($_GET['id'])) ? $article[0]['postTitle'] : '' ?>'><br>
+    </div>
     <p class="formAuth__error"><?php echo($data["error-title"] ?? '') ?></p>
     
+    <div class="formAuth__group">
+        <label for="postDesc">Description</label><br>
+        <input type='text' name='postDesc' 
+            value='<?= (isset($_GET['id'])) ? $article[0]['postDesc'] : '' ?>'><br>
+    </div> 
     <p class="formAuth__error"><?php echo($data["error-desc"] ?? '') ?></p>
-    <label for="postDesc">Description</label><br>
-    <input type='text' name='postDesc' 
-        value='<?= (isset($_GET['id'])) ? $article[0]['postDesc'] : '' ?>'><br>
-        
+    
+    <div class="formAuth__group">
+        <label for="postCont">Contenu</label><br>
+        <textarea class="myeditablediv" name='postCont' cols='60' rows='10'>
+            <?php echo (isset($_GET['id'])) ?
+            htmlspecialchars($article[0]['postCont']) : 
+            '' ?></textarea>
+    </div>
     <p class="formAuth__error"><?php echo($data["error-cont"] ?? '') ?></p>
-    <label for="postCont">Contenu</label><br>
-    <textarea class="myeditablediv" name='postCont' cols='60' rows='10'>
-        <?php echo (isset($_GET['id'])) ?
-        htmlspecialchars($article[0]['postCont']) : 
-        '' ?></textarea>
         
-    <p class="formAuth__error"><?php echo($data["error-author"] ?? '') ?></p>
-    <label for="postAuthor">Auteur</label><br>
-    <input type='text' name='postAuthor' value='<?= (isset($_GET['id'])) ?
-            $article[0]['postAuthor'] : '' ?>'><br><br>
+    <div class="formAuth__group">
+        <label for="postAuthor">Auteur</label><br>
+        <input type='text' name='postAuthor' value='<?= (isset($_GET['id'])) ?
+                $article[0]['postAuthor'] : '' ?>'>
+    </div>
+    <p class="formAuth__error"><?php echo($data["error-author"] ?? '') ?></p><br><br>
 
+    <div class="formAuth__group">
+        <input type="file" name="postSrc" id="inputFile" hidden="hidden">
+        <button id='inputFileButton' type="button" class="btn">Ajouter une nouvelle image (.png, .jpeg or .jpg) </button>
+        <label for="postImgName">Titre de l'image : </label>
+        <input type='text' id="customSpace" name='postImgName' 
+            value='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ? $article[0]['postImgName'] : '' ?>'>
+    </div>
+    <div class="formAuth__group">
+        <label for="imgName"> ou sélectionner une image</label>
+        <select name='imgName' id="imgNameSelected">
+            <option value="">Liste d'images</option>
+            <?php if(isset($pictures) && !empty($pictures)): ?>
+            <?php foreach($pictures as $key => $option): ?>
+            <?php if (isset($_GET['id']) && $option === $article[0]['postImgName']): ?>
+            <option value="<?php echo $option['url']; ?>" selected><?php echo $option['imgName']; ?></option>
+            <?php else: ?>
+            <option value="<?php echo $option['url']; ?>" ><?php echo $option['imgName']; ?></option>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </select>
+    </div>
     <p class="formAuth__error"><?php echo($data["error-file"] ?? '') ?></p>
-    <input type="file" name="postSrc" id="inputFile" hidden="hidden">
-    <button id='inputFileButton' type="button" class="btn">Ajouter une nouvelle image (.png, .jpeg or .jpg) </button>
-    <input type='text' id="customSpace" name='postImgName' 
-        value='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ? $article[0]['postImgName'] : '' ?>'><span> ou sélectionner une image</span>
-    <select name='imgName' id="imgNameSelected">
-        <option value="">Selectionne Image</option>
-        <?php if(isset($pictures) && !empty($pictures)): ?>
-        <?php foreach($pictures as $key => $option): ?>
-        <?php if (isset($_GET['id']) && $option === $article[0]['postImgName']): ?>
-        <option value="<?php echo $option['url']; ?>" selected><?php echo $option['imgName']; ?></option>
-        <?php else: ?>
-        <option value="<?php echo $option['url']; ?>" ><?php echo $option['imgName']; ?></option>
-        <?php endif; ?>
-        <?php endforeach; ?>
-        <?php endif; ?>
-    </select><br><br>
     
-    <p><img id='activimg' src='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ?
-        $article[0]['postSrc'] : '' ?>' alt='<?= (isset($_GET['id'])  && isset($article[0]['postSrc'])) ? 
-        $article[0]['postImgName'] : '' ?>' /></p>
-    
-     <p><input type='submit' name='submit' value='submit'></p>
+    <div class="formAuth__group">
+        <img id='activimg' src='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ?
+            $article[0]['postSrc'] : '' ?>' alt='<?= (isset($_GET['id'])  && isset($article[0]['postSrc'])) ? 
+            $article[0]['postImgName'] : '' ?>' />
+        
+        <input type='submit' name='submit' value='envoyer'>
+    </div>
 </form>
 
-<a href="index.php?action=auth&q=<?php echo $_GET['q'] ?>&opt=getAll">Retour</a>
+<p class="back"><a  href="index.php?action=auth&q=<?php echo $_GET['q'] ?>&opt=getAll">Retour</a></p>
 
 <script src="./assets/js/picture.js"></script>

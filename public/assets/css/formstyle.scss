@@ -6,12 +6,17 @@
     font-size: calc(1em + .5vw);
     color: $text-header-color;
     
-    background-color: $bg-header-color;
+    background-color: $bg-color-dark;
     border-radius: 2px;
+    width: 80vw;
+    margin: 1em auto;
+    
+    @include screen-min($tablet-width) {
+        max-width: 60vw;
+    }
     
     &__legend {
         padding: .2em;
-    
         color: $text-header-color;
     
         background-color: $bg-header-color;
@@ -26,6 +31,9 @@
         display: flex;
         flex-direction: column;
         
+        width: 90%;
+        margin: auto;
+        
         & label {
             margin: .5em 0;
         }
@@ -33,12 +41,17 @@
             text-align: center;
             text-decoration: none;
         }
-        & input {
+        & input,
+        & select {
             height: 1.5em;
+            width: 40%;
         }
         & input[type='submit']{
             width: 25vw;
-            margin: 0 auto 1em auto;
+            margin: 1em auto;
+        }
+        & textarea {
+            width: 40vw;
         }
     }
 }

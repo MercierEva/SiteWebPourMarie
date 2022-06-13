@@ -3,13 +3,20 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use Services\Auth;
-use App\Controllers\AdminController;
 
 class AuthController extends AbstractRenderController
 {
     function __construct(){
         if (isset($_SESSION) && !empty($_SESSION["email"])) {
-            new AdminController();
+            if (isset($_GET['q']) && !empty($_GET['q'])) {
+                if ($_GET['q'] === 'aboutAdmin') {
+                    new InfoController();
+                } else {
+                    new ReviewController();
+                }
+            } else {
+                parent::render("admin/templateAdmin", "admin/adminLayout");
+            }
         } else {
             $this->actionValidateAuth();
         }
@@ -24,7 +31,7 @@ class AuthController extends AbstractRenderController
                 $dataError = $authModel->getError();
                 parent::render("admin/viewAuth",  "admin/adminLayout", $dataError);
             } else {
-                new AdminController();
+                parent::render("admin/templateAdmin", "admin/adminLayout");
             }
         } else {
             parent::render("admin/viewAuth",  "admin/adminLayout");

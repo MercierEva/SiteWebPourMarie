@@ -1,0 +1,13 @@
+.content {
+    overflow-x: auto;
+    @include screen-min($tablet-width) {
+        max-width: 60vw;
+    }
+    &__title {
+        margin-left: 5em;
+    }
+    &__addRow {
+        margin-left: 1em;
+    }
+    
+}

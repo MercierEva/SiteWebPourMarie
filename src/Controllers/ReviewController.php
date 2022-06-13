@@ -33,8 +33,7 @@ class ReviewController extends AbstractRenderController
     
     private function addArticle(): void
     {
-        
-        if (isset($_POST['submit']) && $_POST['submit'] === 'submit'){
+        if (isset($_POST['submit']) && $_POST['submit'] === 'envoyer'){
             $formModel = new PostsModel(array());
             $modelData = $formModel->checkCompleteForm();
             if  ($modelData->getError() !== false) {
@@ -75,9 +74,9 @@ class ReviewController extends AbstractRenderController
     
     private function getAll(): void
     {
-        $articles = (new PostsModel(array()))->selectAll();
-        $results = compact("articles");
-        parent::render("admin/templateResume", "admin/adminLayout", $results);
+        $article = (new PostsModel(array()))->selectAll();
+        $result = compact("article");
+        parent::render("admin/templateResume", "admin/adminLayout", $result);
     }
     
     private function viewOne()

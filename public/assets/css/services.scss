@@ -1,0 +1,38 @@
+.card {
+    
+    border: 1px solid $bg-color-dark;
+    border-radius: 1px;
+    background-color: $purple-dark;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1em 10vw 1em 10vw;
+    
+    &__ind {
+        & h3 {
+            margin-left: 1em;
+        }
+        
+        & ul {
+            list-style-type: square;
+        }
+    }
+    &__col {
+        & h3 {
+            margin-left: 1em;
+        }
+        
+        & ul {
+            list-style-type: square;
+        }
+    }
+}
+
+.about {
+    & h2 {
+        text-align: center;
+        margin: 3em 0 1.5em 0;
+    }
+    width: 70vw;
+    margin: 2em auto;
+
+}

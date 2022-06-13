@@ -1,9 +1,10 @@
-<h2><?php echo $article[0]['postTitle'] ?></h2>
-<em><?php echo $article[0]['postDesc'] ?></em>
-<p><?php echo $article[0]['postCont'] ?></p>
+<h1><?= $article[0]['postTitle'] ?></h1>
+<em><?= $article[0]['postDesc'] ?></em>
+<?= $article[0]['postCont'] ?>
 
 <?php if (isset($article[0]['postSrc'])): ?>
-<img src="<?php echo htmlentities($article[0]['postSrc']) ?>" alt="<?php echo htmlentities($article[0]['postImgName'])?>" />
+<img src="<?php echo htmlentities($article[0]['postSrc']) ?>" alt="<?= htmlentities($article[0]['postImgName'])?>" />
 <?php endif; ?>
 
-<a href="index.php?action=auth&q=<?php echo htmlentities($_GET['q'])?>&opt=getAll" >Retour</a>
+
+<p class="back"><a href="index.php?action=auth&q=<?= htmlentities($_GET['q'])?>&opt=getAll" >Retour</a></p>
