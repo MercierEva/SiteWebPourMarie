@@ -1,0 +1,24 @@
+<h2 class="title">Gestion des images</h2>
+<table class="content">
+    <thead>
+        <tr>
+            <th>nom de l'image</th>
+            <th>aperçu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (!empty($pictures) && $pictures !== null): ?>
+            <?php foreach ($pictures as $pict): ?>
+            <tr>
+                <td><?= htmlspecialchars($pict['imgName']) ?></td>
+                <td><img src='<?= htmlspecialchars($pict['url']) ?>' alt='<?= htmlspecialchars($pict['imgName']) ?>'</td>
+                <td class="actions">
+                    <a href="index.php?action=auth&q=imagesAdmin&opt=delete&name=<?= htmlspecialchars($pict['imgName']) ?>" onclick="return confirm('Are you sure ?')" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </tbody>
+</table>
+<p class='back'><a href="index.php?action=auth">Retour</a></p>

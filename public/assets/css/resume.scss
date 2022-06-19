@@ -1,13 +1,48 @@
+.add {
+    margin-left: 15vw;
+}
+
+.content, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
 .content {
+    width: 90vw;
     overflow-x: auto;
+    
+    margin: auto;
+    
     @include screen-min($tablet-width) {
-        max-width: 60vw;
-    }
-    &__title {
-        margin-left: 5em;
-    }
-    &__addRow {
-        margin-left: 1em;
+        width: 70vw;
     }
     
+    & td {
+        text-align: center;
+    }
+    
+    & img {
+        width: 20vw;
+    }
+}
+
+.viewer {
+    width: 80vw;
+    
+    margin: 1em auto;
+    
+    @include screen-min($tablet-width) {
+        width: 65vw;
+    }
+    
+    @include screen-min($desktop-width) {
+        width: 50vw;
+    }
+    
+    &__text {
+        width: 40vw;
+    }
+    
+    & img {
+        width: 50%;
+    }
 }

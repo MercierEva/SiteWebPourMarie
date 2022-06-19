@@ -6,7 +6,7 @@ use Services\{DatabaseManager, Config};
 
 class UserGateway 
 {
-    public static function findUser(&$dataError, $email, $password)
+    public static function findUser(&$dataError, $email, $password) : mixed
     {
         $args = array($email);
         $queryInstance= DatabaseManager::getInstance();
@@ -25,7 +25,7 @@ class UserGateway
         }
     }
     
-    public static function isEmailNotExist($email)
+    public static function isEmailNotExist($email) : boolean
     {
         $args = array($email);
         $queryInstance= DatabaseManager::getInstance();

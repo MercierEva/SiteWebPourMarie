@@ -60,9 +60,18 @@ class FileManager
     
     private function moveUploadedFile() : string
     {
-        $repository = dirname(__DIR__) . '/public/assets/images/userpict';
-        move_uploaded_file($this->tmpName, $repository.'/'. $_POST['postImgName'] 
-        .'.'. $this->extension);
-        return './assets/images/userpict/' . $_POST['postImgName'] . '.' . $this->extension;
+        $repository = dirname(__DIR__) . '/public/assets/images';
+        var_dump($this->tmpName);
+        move_uploaded_file($this->tmpName, $repository.'/'. $_POST['postImgName'] .'.'. $this->extension);
+        return './assets/images/' . $_POST['postImgName'] . '.' . $this->extension;
+    }
+    
+    public static function removePicture($url)
+    {
+        try {
+            unlink($url);
+        } catch (Exception $e) {
+            $e -> getMessage();
+        }
     }
 }

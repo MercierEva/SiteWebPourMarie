@@ -10,37 +10,9 @@ class PostsModel extends Model {
     private $user_id;
     private $img_id;
     private $cat_id;
-    private $title;
-    private $desc;
     private $cont;
     
     public function __construct($dataError){
-        if (isset($_GET['q'])) {
-            switch(substr($_GET['q'], 0, -5)){
-                case "About" :
-                    $this->setCatId("A propos");
-                    break;
-                case "Services" :
-                    $this->setCatId("Services");
-                    break;
-                case "Test" :
-                    $this->setCatId("Témoignages");
-                    break;
-            }
-        } else {
-            switch($_GET['action'])
-            {
-                case "About":
-                    $this->setCatId("A propos");
-                    break;
-                case "Services":
-                    $this->setCatId("Services");
-                    break;
-                case "Test":
-                    $this->setCatId("Témoignages");
-                    break;
-            }
-        }
         parent::__construct($dataError);
     }
     
@@ -58,40 +30,41 @@ class PostsModel extends Model {
         return $this->user_id;
     }
     
-    public function setCatId($cat): void
+    public function setCatId($category): void
     {
-        $queryInstance = DatabaseManager::getInstance();
-        $this->cat_id = $queryInstance->prepareAndExecuteQuery(
-            'SELECT id FROM tb_categories WHERE name=?', 
-                array($cat))[0]['id'];
-        return;
+        try {
+            $cat = '';
+            switch($category) {
+                case "test":
+                case "Test":
+                    $cat = "Témoignages";
+                    break;
+                case "About":
+                case "about":
+                    $cat = "A propos";
+                    break;
+                case "Services":
+                case "services":
+                    $cat = "Services";
+                    break;
+                default: 
+                    $cat = "A propos";
+            }
+            $queryInstance = DatabaseManager::getInstance();
+            $this->cat_id = $queryInstance->prepareAndExecuteQuery(
+                'SELECT id FROM tb_categories WHERE name=?', 
+                    array($cat))[0]['id'];
+            return;
+        } catch (Exception $e) {
+            $msg = $e->getMessage();
+            $msg = compact($msg);
+            parent::render("errorMsg", "viewError", $msg);
+        }
     }
     
     public function getCatId(): int
     {
         return $this->cat_id;
-    }
-    
-    public function setTitle($title): void
-    {
-        $this->title = $title;
-        return;
-    }
-    
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    
-    public function setDesc($desc): void
-    {
-        $this->desc = $desc;
-        return;
-    }
-    
-    public function getDesc(): string
-    {
-        return $this->desc;
     }
     
     public function setCont($cont): void
@@ -109,17 +82,7 @@ class PostsModel extends Model {
     public function checkCompleteForm()
     {
         $model = new self(array());
-        
-        if ($_POST["postTitle"] === ''){
-            $model->dataError['error-title'] = 'Titre obligatoire.';
-        } else {
-            $model->setTitle($_POST["postTitle"]);
-        }
-        if ($_POST["postDesc"] === ''){
-            $model->dataError['error-desc'] = 'Description manquante.';
-        } else {
-            $model->setDesc($_POST["postDesc"]);
-        }
+        $model -> setCatId();
         if ($_POST["postCont"] === ''){
             $model->dataError['error-cont'] = 'Contenu indispensable.';
         } else {
@@ -131,21 +94,28 @@ class PostsModel extends Model {
             $model->setUserId($_POST["postAuthor"]);
         }
         if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $this->update($model);
-        } else {
             if (!empty($_FILES['postSrc']['name'])) {
-                if (!isset($_POST["postImgName"]) ||
-                    empty($_POST["postImgName"])){
+                if (empty($_POST["postImgName"])){
                     $model->dataError['error-file'] = 'Un nom est nécessaire pour
                         l\'image et te permet de la retrouver';
-                    var_dump('1');
                 } else {
                     $this->addElement($model);
-                    var_dump('2');
+                    $this->update($model);
+                }
+            } else {
+                $this->update($model);
+            }
+        } else {
+            if (!empty($_FILES['postSrc']['name'])) {
+                if (empty($_POST["postImgName"])){
+                    $model->dataError['error-file'] = 'Un nom est nécessaire pour
+                        l\'image et te permet de la retrouver';
+                } else {
+                    $this->addElement($model);
+                    $this->createPost($model);
                 }
             } else {
                 $this->createPost($model);
-                var_dump('3');
             }
         }
        
@@ -162,7 +132,6 @@ class PostsModel extends Model {
         } else {
             $src = $modelFile->getPathSrc();
             PicturesModel::insertNewImg($src);
-            $this->createPost($model);
         }
     }
     
@@ -173,17 +142,15 @@ class PostsModel extends Model {
         $img_id = PicturesModel::checkNameLists();
         if ($img_id !== false) {
             $queryInstance->prepareAndExecuteQuery(
-                "INSERT INTO tb_posts (tb_users_id, tb_categories_id,
-                tb_pictures_id, postTitle, postDesc, postCont) 
-                VALUES (?, ?, ?, ?, ?, ?);", 
-                array($model->getUserId(), $model->getCatId(), $img_id[0]['id'],
-                $model->getTitle(), $model->getDesc(), $model->getCont()));
+            "INSERT INTO tb_posts (tb_users_id, tb_categories_id,
+            tb_pictures_id, postCont) VALUES (?, ?, ?, ?);",
+            array($model->getUserId(), $model->getCatId(), 
+            $img_id[0]['id'], $model->getCont()));
         } else {
             $queryInstance->prepareAndExecuteQuery("INSERT INTO tb_posts
-                (tb_users_id, tb_categories_id, tb_pictures_id, postTitle,
-                postDesc, postCont) VALUES (?, ?, ?, ?, ?, ?);", 
-                array($model->getUserId(), $model->getCatId(), null, 
-                $model->getTitle(), $model->getDesc(), $model->getCont()));
+            (tb_users_id, tb_categories_id, tb_pictures_id, postCont) 
+            VALUES (?, ?, ?, ?);", array($model->getUserId(),
+            $model->getCatId(), null, $model->getCont()));
         }
     } 
     
@@ -193,17 +160,15 @@ class PostsModel extends Model {
         if ($img_id !== false){
             $queryResults = $queryInstance->prepareAndExecuteQuery(
             'UPDATE tb_posts SET tb_users_id = ?, tb_categories_id = ?, 
-            tb_pictures_id = ?, postTitle = ?, postDesc = ?, postCont = ? WHERE postId = ?', 
+            tb_pictures_id = ?, postCont = ? WHERE postId = ?', 
             array($model->getUserId(), $model->getCatId(), $img_id[0]['id'], 
-            $model->getTitle(), 
-            $model->getDesc(), $model->getCont(), intval($_GET['id']) ));
+            $model->getCont(), intval($_GET['id']) ));
         } else {
-            $queryResults = $queryInstance->prepareAndExecuteQuery('UPDATE tb_posts SET 
-            tb_users_id = ?, tb_categories_id = ?, tb_pictures_id = ?,
-            postTitle = ?, postDesc = ?, postCont = ?
-            WHERE postId = ?', array($model->getUserId(), $model->getCatId(),
-            null, $model->getTitle(), $model->getDesc(), $model->getCont(), 
-            $model->getUserId(), intval($_GET['id'])));
+            $queryResults = $queryInstance->prepareAndExecuteQuery(
+            'UPDATE tb_posts SET tb_users_id = ?, tb_categories_id = ?, 
+            tb_pictures_id = ?, postCont = ? WHERE postId = ?', 
+            array($model->getUserId(), $model->getCatId(), null,
+            $model->getCont(), intval($_GET['id'])));
         }
 
         if ($queryResults !== false) {
@@ -217,40 +182,41 @@ class PostsModel extends Model {
     
     public function selectAll(){
         $queryInstance = DatabaseManager::getInstance();
-        $queryResults = $queryInstance->prepareAndExecuteQuery(
-                        "SELECT postId, postTitle, postDesc, postCont, postDate,
-                            tb_pictures_id FROM tb_posts 
-                            WHERE tb_posts.tb_categories_id = ?;" , 
-                            array($this->getCatId()));
+        $isWithPicture = $queryInstance->prepareAndExecuteQuery("SELECT tb_pictures_id FROM tb_posts WHERE tb_posts.tb_categories_id = ?;",
+            array($this->getCatId()));
+        if (isset($isWithPicture[0]['tb_pictures_id'])
+            && $isWithPicture[0]['tb_pictures_id'] === null) {
+            $queryResults = $queryInstance->prepareAndExecuteQuery(
+            "SELECT postId, postCont, postDate FROM tb_posts 
+            WHERE tb_posts.tb_categories_id = ?;" , array($this->getCatId()));
+        } else {
+            $queryResults = $queryInstance->prepareAndExecuteQuery(
+            "SELECT postId, postCont, postDate, name as postImgName, url as
+            postSrc, tb_pictures_id FROM tb_posts LEFT JOIN tb_pictures ON 
+            tb_pictures_id=tb_pictures.id WHERE tb_posts.tb_categories_id = ?;",
+            array($this->getCatId()));
+        }
         return $queryResults;
     }
     
-    public function selectOne($postId) {
+    public function selectOne() {
         $queryInstance = DatabaseManager::getInstance();
-        
         $isWithPicture = $queryInstance->prepareAndExecuteQuery("SELECT 
-            tb_pictures_id FROM tb_posts WHERE postId = ?;", array($postId));
-                    
-        if ($isWithPicture !== NULL) {
+            tb_pictures_id FROM tb_posts WHERE postId = ?;", array($_GET['id']));
+        if ($isWithPicture[0]['tb_pictures_id'] !== null) {
             $queryResults = $queryInstance->prepareAndExecuteQuery(
-                "SELECT postId, postTitle, postDesc, postCont,
-                    pseudo as postAuthor, postDate, tb_pictures.name
-                    as postImgName, url as postSrc
-                    FROM tb_posts
-                    INNER JOIN tb_users ON tb_users_id = tb_users.id
-                    INNER JOIN tb_pictures ON tb_pictures_id = tb_pictures.id
-                    WHERE postId = ?",
-                    array($postId)
-                );
+            "SELECT postId, postCont, pseudo as postAuthor, postDate,
+            tb_pictures.name as postImgName, url as postSrc
+            FROM tb_posts INNER JOIN tb_users ON tb_users_id = tb_users.id
+            INNER JOIN tb_pictures ON tb_pictures_id = tb_pictures.id
+            WHERE postId = ?", array($_GET['id']));
         } else {
             $queryResults = $queryInstance->prepareAndExecuteQuery(
-                "SELECT postId, postTitle, postDesc, postCont, pseudo as
-                    postAuthor, postDate FROM tb_posts
-                    INNER JOIN tb_users ON tb_users_id = tb_users.id
-                    WHERE postId = ?",
-                    array($postId)
-                );
+            "SELECT postId, postCont, pseudo as postAuthor, postDate
+            FROM tb_posts INNER JOIN tb_users ON tb_users_id = tb_users.id
+            WHERE postId = ?", array($_GET['id']));
         }
+
         return $queryResults;
     }
     

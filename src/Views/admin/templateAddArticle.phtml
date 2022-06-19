@@ -1,65 +1,51 @@
-<form class="formAuth" action='' method='POST' accept-charset="UTF-8"  enctype="multipart/form-data">
-    <div class="formAuth__group">
-        <label for="postTitle">Titre</label><br>
-        <input type='text' name='postTitle' 
-            value='<?= (isset($_GET['id'])) ? $article[0]['postTitle'] : '' ?>'><br>
-    </div>
-    <p class="formAuth__error"><?php echo($data["error-title"] ?? '') ?></p>
-    
-    <div class="formAuth__group">
-        <label for="postDesc">Description</label><br>
-        <input type='text' name='postDesc' 
-            value='<?= (isset($_GET['id'])) ? $article[0]['postDesc'] : '' ?>'><br>
-    </div> 
-    <p class="formAuth__error"><?php echo($data["error-desc"] ?? '') ?></p>
-    
-    <div class="formAuth__group">
-        <label for="postCont">Contenu</label><br>
-        <textarea class="myeditablediv" name='postCont' cols='60' rows='10'>
+<h2 class='title'><em>Rubrique <?php switch(substr($_GET['q'], 0, -5)): case "test": ?>témoignages<?php break; ?><?php case "about": ?>à propos<?php break; ?><?php default: ?>services<?php endswitch; ?></em> : Ici tu peux générer le contenu ou en modifier</h2>
+<form action='' method='POST' accept-charset="UTF-8"  enctype="multipart/form-data">
+    <fieldset class="formArticle">
+        <textarea id="myTextarea" name='postCont'>
             <?php echo (isset($_GET['id'])) ?
             htmlspecialchars($article[0]['postCont']) : 
             '' ?></textarea>
-    </div>
-    <p class="formAuth__error"><?php echo($data["error-cont"] ?? '') ?></p>
-        
-    <div class="formAuth__group">
-        <label for="postAuthor">Auteur</label><br>
-        <input type='text' name='postAuthor' value='<?= (isset($_GET['id'])) ?
-                $article[0]['postAuthor'] : '' ?>'>
-    </div>
-    <p class="formAuth__error"><?php echo($data["error-author"] ?? '') ?></p><br><br>
-
-    <div class="formAuth__group">
-        <input type="file" name="postSrc" id="inputFile" hidden="hidden">
-        <button id='inputFileButton' type="button" class="btn">Ajouter une nouvelle image (.png, .jpeg or .jpg) </button>
-        <label for="postImgName">Titre de l'image : </label>
-        <input type='text' id="customSpace" name='postImgName' 
-            value='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ? $article[0]['postImgName'] : '' ?>'>
-    </div>
-    <div class="formAuth__group">
-        <label for="imgName"> ou sélectionner une image</label>
-        <select name='imgName' id="imgNameSelected">
-            <option value="">Liste d'images</option>
-            <?php if(isset($pictures) && !empty($pictures)): ?>
-            <?php foreach($pictures as $key => $option): ?>
-            <?php if (isset($_GET['id']) && $option === $article[0]['postImgName']): ?>
-            <option value="<?php echo $option['url']; ?>" selected><?php echo $option['imgName']; ?></option>
-            <?php else: ?>
-            <option value="<?php echo $option['url']; ?>" ><?php echo $option['imgName']; ?></option>
-            <?php endif; ?>
-            <?php endforeach; ?>
-            <?php endif; ?>
-        </select>
-    </div>
-    <p class="formAuth__error"><?php echo($data["error-file"] ?? '') ?></p>
-    
-    <div class="formAuth__group">
+        <p class="formArticle__error"><?php echo($data["error-cont"] ?? '') ?></p>
+            
+        <div class="formArticle__group">
+            <div class="formArticle__group__loader">
+                <label for="postImgName">Titre de la nouvelle image :</label>
+                <input type='text' id="customSpace" name='postImgName' 
+                    value='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ? 
+                    $article[0]['postImgName'] : '' ?>'>
+                <input type="file" name="postSrc" id="inputFile" hidden="hidden">
+            </div>
+            <button id='inputFileButton' type="button" class="formArticle__group__btn">
+                    Ajouter une nouvelle image (.png, .jpeg or .jpg) </button>
+            <div class="formArticle__group__loader">
+                <label for="imgName"> ou sélectionner une image :</label>
+                <select name='imgName' id="imgNameSelected">
+                    <option value="">Liste d'images</option>
+                    <?php if(isset($pictures) && !empty($pictures)): ?>
+                    <?php foreach($pictures as $key => $option): ?>
+                    <?php if (isset($_GET['id']) && $option === $article[0]['postImgName']): ?>
+                    <option value="<?php echo $option['url']; ?>" selected><?php echo $option['imgName']; ?></option>
+                    <?php else: ?>
+                    <option value="<?php echo $option['url']; ?>" ><?php echo $option['imgName']; ?></option>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+            </div>
+        </div>
+        <p class="formArticle__error"><?php echo($data["error-file"] ?? '') ?></p>
         <img id='activimg' src='<?= (isset($_GET['id']) && isset($article[0]['postSrc'])) ?
-            $article[0]['postSrc'] : '' ?>' alt='<?= (isset($_GET['id'])  && isset($article[0]['postSrc'])) ? 
-            $article[0]['postImgName'] : '' ?>' />
-        
-        <input type='submit' name='submit' value='envoyer'>
-    </div>
+                $article[0]['postSrc'] : '' ?>' alt='<?= (isset($_GET['id'])  && isset($article[0]['postSrc'])) ? 
+                $article[0]['postImgName'] : '' ?>' />
+        <div class="formArticle__author">
+            <label for="postAuthor">Auteur : </label>
+            <input type='text' name='postAuthor' value='<?= (isset($_GET['id'])) ?
+                    $article[0]['postAuthor'] : '' ?>'>
+            <p class="formArticle__error"><?php echo($data["error-author"] ?? '') ?></p>
+            
+            <input type='submit' name='submit' value='envoyer'>
+        </div>
+    </fieldset>
 </form>
 
 <p class="back"><a  href="index.php?action=auth&q=<?php echo $_GET['q'] ?>&opt=getAll">Retour</a></p>

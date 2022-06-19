@@ -46,12 +46,6 @@ html {
     margin: auto;
 }
 
-.form {
-    display: block;
-    width: 80%;
-    margin: 1em auto;
-}
-
 /* ==============================
            AUTH PAGE 
 ==================================*/
@@ -89,127 +83,107 @@ html {
         section home services Stylisting 
 =============================================*/
 .hang {
-    @include screen-min($tablet-width) {
-        & article:nth-child(odd) {
-        
-            display: grid;
-            grid-template: 2fr 1fr / 2fr 1fr;
-            
-            width: 100%;
-            text-align: justify;
-            padding: 1em 10vw 1em 10vw;
-            margin: 2em auto;
-            
-            & p:nth-child(1) {
-                grid-row: 1 / 2;
-                grid-column: 1 / 2;
-                align-self: center;
-            }
-            
-            & p:nth-child(2) {
-                grid-row: 2 / 3;
-                grid-column: 1 / 2;
-            }
-            
-            & img {
-                width: 80%;
-                grid-row: 1 / 3;
-                grid-colmun: 2 / 3;
-                margin: auto;
-            }
-        }
-        
-        & article:nth-child(even) {
-            display: grid;
-            grid-template: 2fr 1fr / 2fr 1fr;
-            
-            text-align: justify;
-            font-size: 1.5em;
-            padding: .5em;
-            
-            & p:nth-child(1) {
-                grid-row: 1 / 2;
-                grid-column: 2 / 3;
-                margin: 1em 1em 0 1em;
-                align-self: center;
-            }
-            
-            & p:nth-child(2) {
-                grid-row: 2 / 3;
-                grid-column: 2 / 3;
-                margin: 0 1em 1em 1em;
-            }
-            
-            & img {
-                width: 80%;
-                grid-row: 1 / 3;
-                grid-colmun: 1 / 2;
-                padding: 1em;
-                margin: auto;
-            }
-        } 
-    }
-    
+     
     & article {
         display: flex;
         flex-direction: column;
         padding: 2em;
+        font-size: 1.2em;
+        text-align: justify;
+        align-items: center;
+        justify-content: space-between;
+        margin: 2em auto;
+        
         
         & img {
-            width: calc(40% + 2vw);
+            width: 80%;
             margin: auto;
         }
+    }
+    & article:nth-child(2) {
+        width: 80vw;
+        background-color: $purple-dark;
+        & img {
+            display: none;
+            visibility: hidden;
+        }
+    }
+    
+    @include screen-min($tablet-width) {
+        & article {
+            display: flex;
+            flex-direction: row;
+            gap: 2em;
+            width: 60%;
+            
+            & img {
+                width: 20vw;
+            }
+        } 
+            
+        & article:nth-child(2) {
+            width: 80vw;
+            & img {
+                display: none;
+                visibility: hidden;
+            }
+        }
+       
     }
 }
 
 .footer {
     
     background-color: $bg-header-color;
-    padding: 2em;
     
-    @include screen-min($tablet-width) {
-        &__contact {
+    &__contact {
+        
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        
+        @include screen-min($tablet-width) {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             text-align: center;
-            
-            & address {
-                width: 50%;
-                margin: auto;
-            }
+            margin-left: 5em;
         }
-    }
-    
-    &__contact {
-        display: flex;
-        flex-direction: column;
         
         & address {
-            width: 50%;
             margin: 1em auto;
+            
+            @include screen-min($tablet-width) {
+                    margin: auto;
+                }
+            
+            & a {
+                color: $text-header-color;
+                font-size: 1.2em;
+            }
+        }
+        
+        &__map { 
+            @include screen-min($tablet-width) {
+                height: 30vw;
+                width: 40vw;
+                margin: 1em auto;
+            }
+            
+            @include screen-min($desktop-width) {
+                height: 20vw;
+                width: 30vw;
+                margin: 1em auto;
+            }
+            
+            height: 50vw;
+            width: 90%;
+            margin: 1em auto;
+            
         }
     }
 }
 
-#map { 
-    @include screen-min($tablet-width) {
-        height: 30vw;
-        width: 40vw;
-        margin: 1em auto;
-    }
-    
-    @include screen-min($desktop-width) {
-        height: 20vw;
-        width: 30vw;
-        margin: 1em auto;
-    }
-    
-    height: 50vw;
-    width: 50%;
-    margin: 1em auto;
-    
-}
 
 .back {
     text-align: center;

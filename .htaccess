@@ -1,5 +1,5 @@
 RewriteEngine on
 
 RewriteCond %{HTTP_HOST} ^https://evamercier.ide.3wa.io
-RewriteCond %{REQUEST_URI} !^/SophroMarie/public/index.php
-RewriteRule ^(.*)$ /SophroMarie/public/index.php?action=$1&q=$2 [QSA,L]
+RewriteCond %{REQUEST_URI} !^/TestProject/public/index.php
+RewriteRule ^(.*)$ /TestProject/public/index.php?action=$1&q=$2 [QSA,L]

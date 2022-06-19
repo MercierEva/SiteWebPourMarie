@@ -11,7 +11,8 @@ class InfoModel extends Model {
     private $mail;
     private $tel;
     
-    public function __construct($dataError){
+    public function __construct($dataError)
+    {
         parent::__construct($dataError);
     }
     
@@ -59,7 +60,7 @@ class InfoModel extends Model {
         return $this->tel;
     }
     
-    public function checkCompleteForm()
+    public function checkCompleteForm() : InfoModel
     {
         $model = new self(array());
 
@@ -71,8 +72,9 @@ class InfoModel extends Model {
         return $model;
     }
     
-    public function edit($model)
+    public function edit() : void
     {
+        $model = $this->checkCompleteForm();
         $queryInstance = DatabaseManager::getInstance();
         $queryResults = $queryInstance->prepareAndExecuteQuery(
             'UPDATE tb_infos SET street = ?, city = ?, tel = ?, mail = ?',
@@ -80,7 +82,7 @@ class InfoModel extends Model {
             $model->getMail()));
     }
     
-    public function viewAll()
+    public function viewAll() : array
     {
         $queryInstance = DatabaseManager::getInstance();
         $queryResults = $queryInstance->prepareAndExecuteQuery(

@@ -1,0 +1,28 @@
+<form method='POST' class="form"> 
+    <fieldset class="formAuth">
+        <legend class="formAuth__legend">Se connecter</legend> 
+        <p class="formAuth__error"><?php echo($data["error-connect"] ?? '') ?></p>
+        <div class="formAuth__group">
+            <div class="formArticle__group__loader">
+                <label for="email">L'e-mail</label>
+                <input type="text" name="email"/> 
+            </div>
+        </div>
+        <p class="formAuth__error"> <?php echo($data["error-email"] ?? '') ?> </p>
+        <div class="formAuth__group">
+            <div class="formArticle__group__loader">
+                <label for="pass">Le mot de passe</label>
+                <input type="password" name="pass"/> 
+            </div>
+        </div>
+        <p class="formAuth__error"> <?php echo($data["error-pwd"] ?? '') ?> </p>
+        <div class="formAuth__group">
+            <div class="formArticle__group__loader">
+                <input type="hidden" name="form" value='Connexion'> 
+                <input type="submit" value="Connexion"/>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<p  class="back"><a href="index.php?action=Welcome">Retour</a></p>
+  

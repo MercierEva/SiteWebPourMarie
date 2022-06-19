@@ -1,27 +1,20 @@
+<?php if (isset($articles) && !empty($articles)): ?>
 <section class="hang">
     <article>
-        <p>Vous avez une problématique de vie (stress, anxiété, insomnie, fatigue).
-        Vos projets vous paraissent inatteignables.
-        Vos pensées sont négatives et accaparantes.</p>
-        <p>Je vous propose la détente, le lacher prise et une meilleure connaissance de soi.</p>
-        <img src="./assets/images/jasper-doornbos-EilGUQX9ELI-unsplash.jpg">
+        <?php if (isset($articles[1]['postSrc'])): ?>
+        <img src="<?php echo htmlentities($articles[1]['postSrc']) ?>" alt="<?= htmlentities($articles[1]['postImgName'])?>" />
+        <?php endif; ?>
+        <div>
+        <?= $articles[1]['postCont'] ?>
+        </div>
+    </article>
+    <article>
+        <?php if (isset($articles[0]['postSrc'])): ?>
+        <img src="<?php echo htmlentities($articles[0]['postSrc']) ?>" alt="<?= htmlentities($articles[0]['postImgName'])?>" />
+        <?php endif; ?>
+        <div>
+        <?= $articles[0]['postCont'] ?>
+        </div>
     </article>
 </section>
-<article class="card">
-    <h3>Qu'est ce que la sophrologie ?</h3>
-    <section>
-        <p>La sophrologie est une méthode de relaxation qui permet d’accéder 
-        à un mieux être psychologique et corporel. 
-        A l’aide de techniques et d’exercices respiratoires découlant du yoga,
-        la sophrologie amène à une meilleure capacité de concentration, 
-        de ressentis de plsu en plus positifs, de prise de conscience.</p>
-        <p>Le but est d’arriver à une autonomie et à une meilleure
-        reconnaissance des ses aptitudes et capacités de vie.</p>
-        <p>Pour Quoi ? : Pour une gestion de son stress, de son anxiété,
-        de son sommeil. Pour prévoir favorablement un événement générateur 
-        de stress comme une maternité ou un examen.</p>
-    </section>
-</article>
-
-
-
+<?php endif; ?>

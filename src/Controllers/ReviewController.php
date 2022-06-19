@@ -52,12 +52,9 @@ class ReviewController extends AbstractRenderController
     
     private function update() : void
     {
-        $articleModel = new PostsModel(array());
-        $article = $articleModel->selectOne($_GET['id']);
-        $pictures = PicturesModel::listAllPictures();
-        $result = compact('article', 'pictures');
         if (isset($_POST['submit'])) 
         {
+            $articleModel = new PostsModel(array());
             $modelData = $articleModel->checkCompleteForm();
             if ($modelData->getError() !== false)
             {
@@ -68,25 +65,28 @@ class ReviewController extends AbstractRenderController
                 header('location: index.php?action=auth&q='. $_GET['q'] . '&opt=getAll');
             }
         } else {
+            $articleModel = new PostsModel(array());
+            $article = $articleModel->selectOne($_GET['id']);
+            $pictures = PicturesModel::listAllPictures();
+            $result = compact('article', 'pictures');
             parent::render("admin/templateAddArticle", "admin/adminLayout", $result);
         }
     }
     
     private function getAll(): void
-    {
-        $article = (new PostsModel(array()))->selectAll();
+    {   
+        $articleModel = new PostsModel(array());
+        $articleModel->setCatId(substr($_GET['q'], 0, -5));
+        $article = $articleModel->selectAll();
         $result = compact("article");
         parent::render("admin/templateResume", "admin/adminLayout", $result);
     }
     
     private function viewOne()
     {
-        if (isset($_GET['id'])) {
-            $articleModel = new PostsModel(array());
-            $article = $articleModel->selectOne($_GET['id']);
-            $result = compact('article');
-            parent::render("admin/templateViewArticle", "admin/adminLayout", $result);
-        }
+        $article = (new PostsModel(array()))->selectOne();
+        $result = compact('article');
+        parent::render("admin/templateViewArticle", "admin/adminLayout", $result);
     }
     
     private function deleteOne()

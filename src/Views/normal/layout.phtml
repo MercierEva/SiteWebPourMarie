@@ -49,11 +49,11 @@
         <section class="footer__contact">
             <address>
                 <h2>Contactez-moi</h2>
-                3 rue de la vigne <br> 35460 St Etienne en Cogles (Maen Roch)<br><br>
-                <a href="mailto:marie.puchault@outlook.fr">marie.puchault@outlook.fr</a><br>
-                <a href="tel:+33617712335">06.17.71.23.35</a>
+                <?= $infos[0]['street'] ?><br> <?=  $infos[0]['city'] ?><br><br>
+                <a href="mailto:<?= $infos[0]['mail'] ?>"><?=  $infos[0]['mail'] ?></a><br>
+                <a href="tel:+33<?= preg_replace("/[^0-9]\./", '', $infos[0]['tel']) ?>"><?=  $infos[0]['tel'] ?></a>
             </address>
-            <div id="map"></div>
+            <div id="map" class="footer__contact__map"></div>
         </section>
     </footer>
     <script type="module" src='./assets/js/streetmap.js'></script>

@@ -1,0 +1,22 @@
+<form class="formContact" method='POST' accept-charset="UTF-8">
+    <div class="formContact__group">
+        <label for="street">Modifier la rue : </label>
+        <input type="text" value="<?= isset($infos[0]['street']) ? htmlspecialchars($infos[0]['street']) : ''?>" name="street">
+    </div>
+    <div class="formContact__group">
+        <label for="city">Modifier la ville : </label>
+        <input type="text" value="<?= isset($infos[0]['city']) ? htmlspecialchars($infos[0]['city']) : ''?>" name="city">
+    </div>
+    <div class="formContact__group">
+        <label for="mail">Modifier l'adresse mail : </label>
+        <input type="text" value="<?= isset($infos[0]['mail']) ? htmlspecialchars($infos[0]['mail'])  : ''?>" name="mail">
+    </div>
+    <div class="formContact__group">
+        <label for="tel">Modifier le numéro : </label>
+        <input type="text" value="<?= isset($infos[0]['tel']) ? htmlspecialchars($infos[0]['tel']) : '' ?>" name="tel">
+    </div>
+    <div class="formContact__group">
+        <input type="submit" name="submit" value="modifier">
+    </div>
+</form>
+<p class='back'><a href="index.php?action=auth">Retour</a></p>

@@ -7,16 +7,20 @@ use Services\DatabaseManager;
 
 class InfoController extends AbstractRenderController
 {
-    function __construct(){ 
+    function __construct()
+    { 
         $infoModel = new InfoModel(array());
-        if (isset($_POST['submit']) && $_POST['submit'] === 'Modifier') {
-            $resultModel = $infoModel->checkCompleteForm();
-            $infoModel->edit($resultModel);
-        } else {
-            $infos = $infoModel->viewAll();
+        if (isset($_POST['submit']) && $_POST['submit'] === 'modifier') {
+            $infoModel->edit();
+        }
+        $infos = $infoModel->viewAll();
+        if (!empty($infos) && $infos !== null) {
             $infos = compact("infos");
-            parent::render("admin/templateAbout", "admin/adminLayout", $infos);
+            parent::render("admin/templateContact", "admin/adminLayout", $infos);
+        } else {
+            $msg = "Les informations de tes coordonnées ne sont plus accessibles";
+            $msg = compact("msg");
+            parent::render("errorMsg", "viewError", $msg);
         }
     } 
-
 }

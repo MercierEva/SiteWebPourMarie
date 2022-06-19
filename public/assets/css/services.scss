@@ -1,38 +1,54 @@
+.intro {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    
+     
+    @include screen-min($tablet-width) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+    & img {
+        width: 90vw;
+        @include screen-min($tablet-width) {
+            width: 30vw;
+        }
+    }
+    
+     & article {
+        width: 50vw;
+        margin-left: 1em;
+        padding: 1em;
+    
+    }
+
+}
+
 .card {
     
     border: 1px solid $bg-color-dark;
     border-radius: 1px;
     background-color: $purple-dark;
     width: 100%;
-    margin: 0 auto;
-    padding: 1em 10vw 1em 10vw;
+    margin: 0;
     
-    &__ind {
-        & h3 {
-            margin-left: 1em;
-        }
-        
-        & ul {
-            list-style-type: square;
-        }
+    & ul {
+        list-style-type: square;
     }
-    &__col {
-        & h3 {
-            margin-left: 1em;
+
+    & img {
+        width: 90vw;
+        @include screen-min($tablet-width) {
+            width: 30vw;
         }
         
-        & ul {
-            list-style-type: square;
-        }
+        margin: auto;
+    }
+    
+    & article {
+        width: 60vw;
+        margin: auto;
     }
 }
 
-.about {
-    & h2 {
-        text-align: center;
-        margin: 3em 0 1.5em 0;
-    }
-    width: 70vw;
-    margin: 2em auto;
-
-}

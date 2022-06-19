@@ -103,7 +103,7 @@
             width: 100%;
             margin: 0;
             
-            background-color:$bg-color;
+            background-color:$purple-dark;
             
             @include screen-min($tablet-width) {
                 background-color: $text-color;
@@ -120,10 +120,10 @@
             }
             
             &:hover {
-                background-color: $bg-header-color;
+                background-color: gray;
                 
                 & a {
-                    color: $text-header-color;
+                    color: $bg-header-color;
                 }
                 
                 & ul {

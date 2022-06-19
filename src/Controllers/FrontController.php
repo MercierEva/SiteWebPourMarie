@@ -4,11 +4,12 @@ namespace App\Controllers;
 
 use Services\{Auth, Config, SessionUtils};
 use App\Controllers\AuthController;
-use App\Models\PostsModel;
+use App\Models\{PostsModel, InfoModel};
 
 class FrontController extends AbstractRenderController
 {
-    function __construct(){
+    function __construct()
+    {
         try
         {   
             SessionUtils::init();
@@ -17,7 +18,7 @@ class FrontController extends AbstractRenderController
                 // actions to admins only
                 case "close":
                     SessionUtils::destroySession();
-                    parent::render("normal/viewWelcome", "normal/layout");
+                    $this->displayAll("Welcome");
                     break;
                 case "auth":
                     new AuthController();
@@ -26,27 +27,40 @@ class FrontController extends AbstractRenderController
                 case "About":
                 case "Services":
                 case "Test":
+                case "Welcome":
                     $this->displayAll($action);
                     break;
-                default: 
-                    $this->displaySelected();
+                case "": 
+                    $this->displayAll("Welcome");
+                    break;
+                default :
+                    $msg = "Ce chemin n'existe pas";
+                    $msg = compact("msg");
+                    parent::render("errorMsg", "viewError", $msg);
             } 
         } catch (Exception $e){
             $model = new Model(array('exception' => $e->getMessage()));
-            $parent::render(Config::getViewError()["default"]);
+            $msg = $model->getError();
+            $msg = compact($msg);
+            parent::render("errorMsg", "viewError", $msg);
         }
     }
     
-    function displayAll($category) : void
+    function getContact(): array
     {
-        $articles = (new PostsModel(array()))->selectAll();
-        $results = compact("articles");
+        $infoModel = new InfoModel(array());
+        $infos = $infoModel->viewAll();
+        return $infos;
+    }
+    
+    function displayAll($category): void
+    {
+        $articlesModel = new PostsModel(array());
+        $articlesModel->setCatId($category);
+        $articles = $articlesModel->selectAll();
+        $infos = $this->getContact();
+        $results = compact("articles", "infos");
         parent::render("normal/view".$category, "normal/layout", $results);
     }
     
-    function displaySelected()
-    {
-        
-        parent::render("normal/viewWelcome", "normal/layout");
-    }
 }

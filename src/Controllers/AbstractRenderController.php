@@ -4,7 +4,9 @@ namespace App\Controllers;
 
 abstract class AbstractRenderController {
     
-    protected function render(string $file, string $layout, ?array $data = null){
+    protected function render(string $file, string $layout, 
+                                    ?array $data = null) : void
+    {
         // Start output buffer
         ob_start();
         

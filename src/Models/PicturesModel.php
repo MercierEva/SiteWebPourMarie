@@ -17,15 +17,15 @@ class PicturesModel extends Model {
     {
         $queryInstance = DatabaseManager::getInstance();
         $queryInstance->prepareAndExecuteQuery(
-                'INSERT INTO tb_pictures (url, name) VALUES (?, ?);',
+            'INSERT INTO tb_pictures (url, name) VALUES (?, ?);',
                 array($src, $_POST["postImgName"]));
         return;
     }
-    public static function listAllPictures()
+    public static function listAllPictures() : array
     {
         $queryInstance = DatabaseManager::getInstance();
         $queryResults = $queryInstance->prepareAndExecuteQuery(
-                        "SELECT name as imgName, url FROM tb_pictures");
+            "SELECT name as imgName, url FROM tb_pictures");
         return $queryResults;
     }
     
@@ -40,5 +40,22 @@ class PicturesModel extends Model {
         } else {
             return $result;
         }
+    }
+    
+    public static function removePicture() : void
+    {
+        $queryInstance = DatabaseManager::getInstance();
+        $result = $queryInstance->prepareAndExecuteQuery(
+            "DELETE FROM tb_pictures WHERE name = ?;", 
+            array($_GET['name']));
+    }
+    
+    public static function selectUrl() : array
+    {
+        $queryInstance = DatabaseManager::getInstance();
+        $result = $queryInstance->prepareAndExecuteQuery(
+            "SELECT url FROM tb_pictures WHERE name = ?;", 
+            array($_GET['name']));
+        return $result;
     }
 }

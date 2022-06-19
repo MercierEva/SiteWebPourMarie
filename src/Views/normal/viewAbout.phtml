@@ -1,15 +1,11 @@
-<section class="card">
-    <h3>Qu'est ce que la sophrologie ?</h3>
+<?php if (isset($articles) && !empty($articles)): ?>
+<section class="about">
+    <?php if (isset($articles[0]['postSrc'])): ?>
+    <img src="<?php echo htmlentities($articles[0]['postSrc']) ?>" alt="<?= htmlentities($articles[0]['postImgName'])?>" />
+    <?php endif; ?>
     <article>
-        <p>La sophrologie est une méthode de relaxation qui permet d’accéder 
-        à un mieux être psychologique et corporel. 
-        A l’aide de techniques et d’exercices respiratoires découlant du yoga,
-        la sophrologie amène à une meilleure capacité de concentration, 
-        de ressentis de plsu en plus positifs, de prise de conscience.</p>
-        <p>Le but est d’arriver à une autonomie et à une meilleure
-        reconnaissance des ses aptitudes et capacités de vie.</p>
-        <p>Pour Quoi ? : Pour une gestion de son stress, de son anxiété,
-        de son sommeil. Pour prévoir favorablement un événement générateur 
-        de stress comme une maternité ou un examen.</p>
+        <?= $articles[0]['postCont'] ?>
     </article>
 </section>
+<?php endif; ?>
+

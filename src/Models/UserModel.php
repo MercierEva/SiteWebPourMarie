@@ -9,20 +9,24 @@ class UserModel extends Model
 {
     private $email;
     
-    public function __construct($dataError){
+    public function __construct($dataError)
+    {
         parent::__construct($dataError);
     }
     
-    public function getEmail(){
+    public function getEmail() : string
+    {
         return $this->email;
     }
     
-    private function setEmail($email){
+    private function setEmail($email) : void
+    {
         $this->email = $email;
         return;
     }
     
-    public static function getModelUser($email, $password) {
+    public static function getModelUser($email, $password) : UserModel
+    {
         $model = new self(array());
         $user = UserGateway::findUser($model->dataError, $email, $password);
         if (!empty($user)){
@@ -33,7 +37,8 @@ class UserModel extends Model
         return $model;
     }
     
-    public static function addUser($email, $hashedPassword){
+    public static function addUser($email, $hashedPassword) : UserModel
+    {
         $model = new self(array());
         $isFree = UserGateway::isEmailNotExist($email);
         if ($isFree){
