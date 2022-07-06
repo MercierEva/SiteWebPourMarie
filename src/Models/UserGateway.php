@@ -25,7 +25,7 @@ class UserGateway
         }
     }
     
-    public static function isEmailNotExist($email) : boolean
+    public static function isEmailNotExist($email)
     {
         $args = array($email);
         $queryInstance= DatabaseManager::getInstance();
