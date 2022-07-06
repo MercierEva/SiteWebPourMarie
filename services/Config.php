@@ -6,10 +6,10 @@ class Config
 {
     public static function getAuthData(&$db_host, &$db_name, 
                                         &$db_user, &$db_password){
-        $db_host = "mysql:host=127.0.0.1;port=3306;";
-        $db_name = "dbname=evamercier_sophroMDB;charset=UTF8;";
-        $db_user = "evmercier";
-        $db_password = "-->EVA!!";
+            $db_host = "mysql:host=db.3wa.io;";
+            $db_name = "dbname=evamercier_sophroMDB;charset=UTF8;";
+            $db_user = "evamercier";
+            $db_password = "9c7373088337d13233d8e5d951bb7757";
     }
     
     public static function getViewsError(){
