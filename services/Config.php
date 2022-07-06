@@ -6,7 +6,7 @@ class Config
 {
     public static function getAuthData(&$db_host, &$db_name, 
                                         &$db_user, &$db_password){
-        $db_host = "mysql:host=localhost;";
+        $db_host = "mysql:host=127.0.0.1;port=3306;";
         $db_name = "dbname=evamercier_sophroMDB;charset=UTF8;";
         $db_user = "evmercier";
         $db_password = "-->EVA!!";
