@@ -50,8 +50,8 @@
     }
     
     & article {
-        width: 90vw;
         margin: auto;
+        padding: .5em;
 
         @include screen-min($tablet-width) {
             width: 50vw;

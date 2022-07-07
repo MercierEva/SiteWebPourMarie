@@ -62,7 +62,7 @@ class ReviewController extends AbstractRenderController
                 parent::render("admin/templateAddArticle",
                     "admin/adminLayout", $dataError);
             } else {
-                header('location: index.php?action=auth&q='. $_GET['q'] . '&opt=getAll');
+                header('Location: index.php?action=auth&q='. $_GET['q'] . '&opt=getAll');
             }
         } else {
             $articleModel = new PostsModel(array());

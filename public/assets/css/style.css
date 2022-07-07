@@ -400,8 +400,8 @@ html {
         width: 30vw;
         margin: auto; } }
   .card article {
-    width: 90vw;
-    margin: auto; }
+    margin: auto;
+    padding: .5em; }
     @media (min-width: 768px) {
       .card article {
         width: 50vw;
