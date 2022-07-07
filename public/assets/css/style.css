@@ -273,6 +273,7 @@ html {
         Form Stylisting 
 ================================*/
 .title {
+  margin-top: 1em;
   text-align: center; }
 
 .formArticle, .formAuth, .formContact {
@@ -366,8 +367,8 @@ html {
 
 .intro {
   display: flex;
-  align-items: center;
-  flex-direction: column-reverse; }
+  flex-direction: column-reverse;
+  align-items: center; }
   @media (min-width: 768px) {
     .intro {
       flex-direction: row;
@@ -378,9 +379,11 @@ html {
       .intro img {
         width: 30vw; } }
   .intro article {
-    width: 50vw;
-    margin-left: 1em;
-    padding: 1em; }
+    width: 90vw;
+    margin: auto; }
+    @media (min-width: 768px) {
+      .intro article {
+        width: 50vw; } }
 
 .card {
   border: 1px solid #E28FE5;
@@ -395,10 +398,15 @@ html {
     margin: auto; }
     @media (min-width: 768px) {
       .card img {
-        width: 30vw; } }
+        width: 30vw;
+        margin: auto; } }
   .card article {
-    width: 60vw;
+    width: 90vw;
     margin: auto; }
+    @media (min-width: 768px) {
+      .card article {
+        width: 50vw;
+        margin: auto; } }
 
 .about {
   display: flex;
@@ -417,5 +425,30 @@ html {
   .about article {
     margin: auto;
     padding: 1em; }
+
+.test {
+  border: 1px solid #E28FE5;
+  border-radius: 1px;
+  background-color: #E28FE5;
+  width: 90vw;
+  margin: auto; }
+  @media (min-width: 768px) {
+    .test {
+      width: 50vw;
+      margin: auto; } }
+  .test img {
+    width: 90vw;
+    margin: auto; }
+    @media (min-width: 768px) {
+      .test img {
+        width: 30vw;
+        margin: auto; } }
+  .test article {
+    width: 90vw;
+    margin: auto; }
+    @media (min-width: 768px) {
+      .test article {
+        width: 50vw;
+        margin: auto; } }
 
 /*# sourceMappingURL=style.css.map */
