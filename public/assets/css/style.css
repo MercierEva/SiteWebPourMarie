@@ -444,6 +444,7 @@ html {
   .test article {
     width: 70vw;
     margin: 1em;
+    padding: .5em;
     background-color: #E28FE5; }
     @media (min-width: 768px) {
       .test article {

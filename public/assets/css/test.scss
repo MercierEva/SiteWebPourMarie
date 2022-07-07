@@ -24,7 +24,8 @@
     
     & article {
         width: 70vw;
-        margin: 1em ;
+        margin: 1em;
+        padding: .5em;
         background-color: $bg-color-dark;
 
         @include screen-min($tablet-width) {
