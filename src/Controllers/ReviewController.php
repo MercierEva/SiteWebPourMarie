@@ -58,7 +58,7 @@ class ReviewController extends AbstractRenderController
             $modelData = $articleModel->checkCompleteForm();
             if ($modelData->getError() !== false)
             {
-                $dataError = $modelData->dataError;
+                $dataError = $modelData->getError();
                 parent::render("admin/templateAddArticle",
                     "admin/adminLayout", $dataError);
             } else {

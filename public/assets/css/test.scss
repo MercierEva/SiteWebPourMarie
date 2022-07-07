@@ -2,7 +2,7 @@
     
     border: 1px solid $bg-color-dark;
     border-radius: 1px;
-    width: 70vw;
+    width: 80vw;
     margin: auto;
 
     @include screen-min($tablet-width) {
@@ -24,7 +24,7 @@
     
     & article {
         width: 70vw;
-        margin: 1.5em auto;
+        margin: 1em ;
         background-color: $bg-color-dark;
 
         @include screen-min($tablet-width) {
