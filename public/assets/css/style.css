@@ -428,7 +428,6 @@ html {
 .test {
   border: 1px solid #E28FE5;
   border-radius: 1px;
-  background-color: #E28FE5;
   width: 70vw;
   margin: auto; }
   @media (min-width: 768px) {
@@ -443,8 +442,9 @@ html {
         width: 30vw;
         margin: auto; } }
   .test article {
-    width: 90vw;
-    margin: auto; }
+    width: 70vw;
+    margin: 1.5em auto;
+    background-color: #E28FE5; }
     @media (min-width: 768px) {
       .test article {
         width: 50vw;
