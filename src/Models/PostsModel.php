@@ -30,11 +30,11 @@ class PostsModel extends Model {
         return $this->user_id;
     }
     
-    public function setCatId($category): void
+    public function setCatId($categorie): void
     {
         try {
             $cat = '';
-            switch($category) {
+            switch($categorie) {
                 case "test":
                 case "Test":
                     $cat = "Témoignages";
@@ -62,7 +62,7 @@ class PostsModel extends Model {
         }
     }
     
-    public function getCatId(): int
+    public function getCatId(): mixed
     {
         return $this->cat_id;
     }
@@ -82,7 +82,7 @@ class PostsModel extends Model {
     public function checkCompleteForm()
     {
         $model = new self(array());
-        $model -> setCatId();
+        $model->setCatId(substr($_GET['q'], 0, -5));
         if ($_POST["postCont"] === ''){
             $model->dataError['error-cont'] = 'Contenu indispensable.';
         } else {

@@ -3,10 +3,10 @@
 <section class="test">
 <?php foreach($articles as $index => $article): ?>
     <article>
+        <?= $article['postCont'] ?>  
         <?php if (isset($article['postSrc'])): ?>
-        <img src="<?php echo htmlentities($article['postSrc']) ?>" alt="<?= htmlentities($article['postImgName'])?>" />
+            <img src="<?php echo htmlentities($article['postSrc']) ?>" alt="<?= htmlentities($article['postImgName'])?>" />
         <?php endif; ?>
-        <?= $article['postCont'] ?>
     </article>
 <?php endforeach; ?>
 </section>

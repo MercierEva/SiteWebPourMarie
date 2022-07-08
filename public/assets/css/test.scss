@@ -1,36 +1,40 @@
 .test {
-    
-    border: 1px solid $bg-color-dark;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-color-dark;
     border-radius: 1px;
-    width: 80vw;
+    width: 90vw;
     margin: auto;
+    text-align: justify;
 
     @include screen-min($tablet-width) {
-        width: 50vw;
-        margin: auto;
-    }
-
-    & img {
         width: 90vw;
         margin: auto;
-
-        @include screen-min($tablet-width) {
-            width: 30vw;
-            margin: auto;
-        }
-        
-        
+        flex-direction: row;
     }
+
     
     & article {
-        width: 70vw;
-        margin: 1em;
-        padding: .5em;
-        background-color: $bg-color-dark;
+        display: flex;
+        width: 100%;
+        padding: 1em;
+        align-items: center;
 
         @include screen-min($tablet-width) {
             width: 50vw;
+            flex-direction: row-reverse;
             margin: auto;
+        }
+
+        & img {
+            width: calc(40vw - 2em);
+            margin: 1em;
+    
+            @include screen-min($tablet-width) {
+                flex-direction: row;
+                width: 25vw;
+                margin: 1em;
+            }  
         }
     }
 }

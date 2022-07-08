@@ -4,8 +4,9 @@ namespace Services;
 
 class UploadException 
 {
+
     public function __construct($code) {
-        $message = $this->codeToMessage($code);
+        $this->message = $this->codeToMessage($code);
     }
 
     private function codeToMessage($code)

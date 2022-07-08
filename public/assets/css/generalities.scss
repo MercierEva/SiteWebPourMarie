@@ -46,6 +46,11 @@ html {
     margin: auto;
 }
 
+.title {
+    padding-top: 1em;
+    text-align: center;
+}
+
 /* ==============================
            AUTH PAGE 
 ==================================*/
@@ -91,7 +96,7 @@ html {
         font-size: 1.2em;
         align-items: center;
         justify-content: space-between;
-        margin: 2em auto;
+        margin: 1em auto;
         
         
         & img {
@@ -111,12 +116,13 @@ html {
     @include screen-min($tablet-width) {
         & article {
             display: flex;
-            flex-direction: row;
+            flex-direction: column-reverse;
             gap: 2em;
             width: 60%;
             
             & img {
-                width: 20vw;
+                width: 50vw;
+                margin: 1em;
             }
         } 
             
