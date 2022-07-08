@@ -104,6 +104,8 @@ html {
 .hang article:nth-child(2) {
   width: 80vw;
   background-color: #B48EAD;
+  padding: 0.5em;
+  margin: 1em;
 }
 .hang article:nth-child(2) img {
   display: none;

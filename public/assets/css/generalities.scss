@@ -107,6 +107,9 @@ html {
     & article:nth-child(2) {
         width: 80vw;
         background-color: $purple-dark;
+        padding: .5em;
+        margin: 1em;
+        
         & img {
             display: none;
             visibility: hidden;
