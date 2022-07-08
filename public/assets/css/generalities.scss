@@ -100,7 +100,7 @@ html {
         
         
         & img {
-            width: 80%;
+            width: 80vw;
             margin: auto;
         }
     }
@@ -121,7 +121,7 @@ html {
             width: 60%;
             
             & img {
-                width: 50vw;
+                width: calc(50vw + 2em);
                 margin: 1em;
             }
         } 

@@ -98,7 +98,7 @@ html {
   margin: 1em auto;
 }
 .hang article img {
-  width: 80%;
+  width: 80vw;
   margin: auto;
 }
 .hang article:nth-child(2) {
@@ -117,7 +117,7 @@ html {
     width: 60%;
   }
   .hang article img {
-    width: 50vw;
+    width: calc(50vw + 2em);
     margin: 1em;
   }
   .hang article:nth-child(2) {
