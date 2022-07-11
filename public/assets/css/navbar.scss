@@ -7,22 +7,12 @@
     display: flex;
     
     width: 100%;
+    height: 5%;
     padding: .5em;
     align-items: center;
     
     background-color: $text-color;
     color:  $text-header-color;
-
-    & p {
-        margin: 0 1em;
-        
-        font-weight: bold;
-        color: $text-header-color;
-        
-        @include screen-min($tablet-width) {
-            display: none;
-        }
-    }
     
     &__btn {
         position: absolute;

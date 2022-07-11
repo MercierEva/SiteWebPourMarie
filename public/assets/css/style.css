@@ -29,7 +29,7 @@ html {
   height: 100%;
   margin: 0;
   font-family: "Arial Narrow", Arial, sans-serif;
-  background-color: #FC9FFF;
+  background-color: #f98bfd;
 }
 
 .header {
@@ -39,7 +39,7 @@ html {
   justify-content: space-around;
   padding: 1em;
   max-width: 100%;
-  background-color: #A6FF6E;
+  background-color: #83ff52;
 }
 
 .page {
@@ -74,9 +74,9 @@ html {
 
 .header__button {
   margin-left: 80%;
-  border: 1px solid #A6FF6E;
+  border: 1px solid #83ff52;
   border-radius: 2px;
-  background-color: #A6FF6E;
+  background-color: #83ff52;
 }
 .header__button a {
   text-decoration: none;
@@ -93,6 +93,7 @@ html {
   flex-direction: column;
   padding: 0.5em;
   font-size: 1.2em;
+  width: 80vw;
   align-items: center;
   justify-content: space-between;
   margin: 1em auto;
@@ -104,7 +105,7 @@ html {
 .hang article:nth-child(2) {
   width: 80vw;
   background-color: #B48EAD;
-  padding: 0.5em;
+  padding: 2em;
   margin: 1em auto;
 }
 .hang article:nth-child(2) img {
@@ -115,8 +116,8 @@ html {
   .hang article {
     display: flex;
     flex-direction: column-reverse;
-    gap: 2em;
-    width: 60%;
+    gap: 0.2em;
+    width: calc(50vw + 2em);
   }
   .hang article img {
     width: calc(50vw + 2em);
@@ -124,6 +125,7 @@ html {
   }
   .hang article:nth-child(2) {
     width: 80vw;
+    padding: 2em;
   }
   .hang article:nth-child(2) img {
     display: none;
@@ -132,7 +134,7 @@ html {
 }
 
 .footer {
-  background-color: #A6FF6E;
+  background-color: #83ff52;
 }
 .footer__contact {
   display: flex;
@@ -191,20 +193,11 @@ html {
   position: relative;
   display: flex;
   width: 100%;
+  height: 5%;
   padding: 0.5em;
   align-items: center;
-  background-color: #6bcd6d;
+  background-color: #49b84a;
   color: #303030;
-}
-.navbar p {
-  margin: 0 1em;
-  font-weight: bold;
-  color: #303030;
-}
-@media (min-width: 768px) {
-  .navbar p {
-    display: none;
-  }
 }
 .navbar__btn {
   position: absolute;
@@ -219,7 +212,7 @@ html {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #FC9FFF;
+  background-color: #f98bfd;
   transition-duration: 0.25s;
 }
 @media (min-width: 768px) {
@@ -273,7 +266,7 @@ html {
 }
 @media (min-width: 768px) {
   .navbar__nav > li {
-    background-color: #6bcd6d;
+    background-color: #49b84a;
   }
 }
 .navbar__nav > li a {
@@ -288,7 +281,7 @@ html {
   background-color: gray;
 }
 .navbar__nav > li:hover a {
-  color: #A6FF6E;
+  color: #83ff52;
 }
 .navbar__nav > li:hover ul {
   display: block;
@@ -326,14 +319,14 @@ html {
   display: flex;
   flex-direction: column;
   flex-basis: 10em;
-  border: 1px solid #E28FE5;
+  border: 1px solid #e3a6e6;
   border-radius: 5px;
   margin: 1em;
   text-decoration: none;
   justify-content: space-around;
   text-align: center;
   color: #303030;
-  background-color: #E28FE5;
+  background-color: #e3a6e6;
 }
 .pageAdmin__option a p {
   margin: 1em;
@@ -349,7 +342,7 @@ html {
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: calc(1em + 0.5vw);
   color: #303030;
-  background-color: #E28FE5;
+  background-color: #e3a6e6;
   border-radius: 2px;
   padding: 1em;
   margin: 1em auto;
@@ -362,7 +355,7 @@ html {
 .formArticle__legend, .formAuth__legend, .formContact__legend {
   padding: 0.2em;
   color: #303030;
-  background-color: #A6FF6E;
+  background-color: #83ff52;
 }
 .formArticle__error, .formAuth__error, .formContact__error {
   font-size: calc(0.5em + 0.5vw);
@@ -492,7 +485,7 @@ html {
 }
 
 .card {
-  border: 1px solid #E28FE5;
+  border: 1px solid #e3a6e6;
   border-radius: 1px;
   background-color: #B48EAD;
   width: 100%;
@@ -550,7 +543,7 @@ html {
 .test {
   display: flex;
   flex-direction: column;
-  background-color: #E28FE5;
+  background-color: #e3a6e6;
   border-radius: 1px;
   width: 90vw;
   margin: auto;
@@ -559,7 +552,7 @@ html {
 @media (min-width: 768px) {
   .test {
     width: 90vw;
-    margin: auto;
+    margin: 1em auto;
     flex-direction: row;
   }
 }
@@ -571,21 +564,23 @@ html {
 }
 @media (min-width: 768px) {
   .test article {
-    width: 50vw;
+    width: 30vw;
     flex-direction: row-reverse;
     margin: auto;
   }
 }
 .test article img {
-  width: calc(40vw - 2em);
+  width: calc(20vw + 4em);
   margin: 1em;
 }
 @media (min-width: 768px) {
   .test article img {
     flex-direction: row;
-    width: 25vw;
-    margin: 1em;
+    width: 20vw;
   }
+}
+.test article:nth-of-type(2) {
+  flex-grow: 2;
 }
 
 /*# sourceMappingURL=style.css.map */

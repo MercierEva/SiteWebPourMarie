@@ -9,7 +9,7 @@
 
     @include screen-min($tablet-width) {
         width: 90vw;
-        margin: auto;
+        margin: 1em auto;
         flex-direction: row;
     }
 
@@ -21,20 +21,23 @@
         align-items: center;
 
         @include screen-min($tablet-width) {
-            width: 50vw;
+            width: 30vw;
             flex-direction: row-reverse;
             margin: auto;
         }
 
         & img {
-            width: calc(40vw - 2em);
+            width: calc(20vw + 4em);
             margin: 1em;
     
             @include screen-min($tablet-width) {
                 flex-direction: row;
-                width: 25vw;
-                margin: 1em;
+                width: 20vw;
             }  
         }
+    }
+
+    & article:nth-of-type(2) {
+        flex-grow: 2;
     }
 }

@@ -108,7 +108,7 @@ html {
     & article:nth-child(2) {
         width: 80vw;
         background-color: $purple-dark;
-        padding: .5em;
+        padding: 2em;
         margin: 1em auto;
 
         & img {
@@ -121,8 +121,8 @@ html {
         & article {
             display: flex;
             flex-direction: column-reverse;
-            gap: 2em;
-            width: 60%;
+            gap: .2em;
+            width: calc(50vw + 2em);
             
             & img {
                 width: calc(50vw + 2em);
@@ -132,6 +132,8 @@ html {
             
         & article:nth-child(2) {
             width: 80vw;
+            padding: 2em;
+
             & img {
                 display: none;
                 visibility: hidden;
