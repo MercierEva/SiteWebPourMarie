@@ -29,7 +29,7 @@ html {
   height: 100%;
   margin: 0;
   font-family: "Arial Narrow", Arial, sans-serif;
-  background-color: #D14E95;
+  background-color: #ffddf7;
 }
 
 .header {
@@ -39,7 +39,7 @@ html {
   justify-content: space-around;
   padding: 1em;
   max-width: 100%;
-  background-color: #91ff8e;
+  background-color: #19c81f;
 }
 
 .page {
@@ -74,9 +74,9 @@ html {
 
 .header__button {
   margin-left: 80%;
-  border: 1px solid #91ff8e;
+  border: 1px solid #19c81f;
   border-radius: 2px;
-  background-color: #91ff8e;
+  background-color: #19c81f;
 }
 .header__button a {
   text-decoration: none;
@@ -104,7 +104,7 @@ html {
 }
 .hang article:nth-child(2) {
   width: 80vw;
-  background-color: #bb0099;
+  background-color: #9a598b;
   padding: 2em;
   margin: 1em auto;
 }
@@ -134,7 +134,7 @@ html {
 }
 
 .footer {
-  background-color: #91ff8e;
+  background-color: #19c81f;
 }
 .footer__contact {
   display: flex;
@@ -196,7 +196,7 @@ html {
   height: 5%;
   padding: 0.5em;
   align-items: center;
-  background-color: #38d33a;
+  background-color: rgb(19, 112, 20);
   color: #303030;
 }
 .navbar__btn {
@@ -212,7 +212,7 @@ html {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #D14E95;
+  background-color: #ffddf7;
   transition-duration: 0.25s;
 }
 @media (min-width: 768px) {
@@ -262,11 +262,11 @@ html {
   justify-content: center;
   width: 100%;
   margin: 0;
-  background-color: #bb0099;
+  background-color: #9a598b;
 }
 @media (min-width: 768px) {
   .navbar__nav > li {
-    background-color: #38d33a;
+    background-color: rgb(19, 112, 20);
   }
 }
 .navbar__nav > li a {
@@ -281,7 +281,7 @@ html {
   background-color: gray;
 }
 .navbar__nav > li:hover a {
-  color: #91ff8e;
+  color: #19c81f;
 }
 .navbar__nav > li:hover ul {
   display: block;
@@ -355,7 +355,7 @@ html {
 .formArticle__legend, .formAuth__legend, .formContact__legend {
   padding: 0.2em;
   color: #303030;
-  background-color: #91ff8e;
+  background-color: #19c81f;
 }
 .formArticle__error, .formAuth__error, .formContact__error {
   font-size: calc(0.5em + 0.5vw);
@@ -487,7 +487,7 @@ html {
 .card {
   border: 1px solid #88008f;
   border-radius: 1px;
-  background-color: #bb0099;
+  background-color: #9a598b;
   width: 100%;
   margin: 0;
 }
