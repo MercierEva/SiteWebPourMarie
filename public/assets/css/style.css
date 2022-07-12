@@ -196,7 +196,7 @@ html {
   height: 5%;
   padding: 0.5em;
   align-items: center;
-  background-color: #49b84a;
+  background-color: #35ff39;
   color: #303030;
 }
 .navbar__btn {
@@ -266,7 +266,7 @@ html {
 }
 @media (min-width: 768px) {
   .navbar__nav > li {
-    background-color: #49b84a;
+    background-color: #35ff39;
   }
 }
 .navbar__nav > li a {
