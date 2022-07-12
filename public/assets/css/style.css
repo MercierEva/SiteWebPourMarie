@@ -39,7 +39,7 @@ html {
   justify-content: space-around;
   padding: 1em;
   max-width: 100%;
-  background-color: #90b644;
+  background-color: #51aa3a;
 }
 
 .page {
@@ -74,9 +74,9 @@ html {
 
 .header__button {
   margin-left: 80%;
-  border: 1px solid #90b644;
+  border: 1px solid #51aa3a;
   border-radius: 2px;
-  background-color: #90b644;
+  background-color: #51aa3a;
 }
 .header__button a {
   text-decoration: none;
@@ -134,7 +134,7 @@ html {
 }
 
 .footer {
-  background-color: #90b644;
+  background-color: #51aa3a;
 }
 .footer__contact {
   display: flex;
@@ -281,7 +281,7 @@ html {
   background-color: gray;
 }
 .navbar__nav > li:hover a {
-  color: #90b644;
+  color: #51aa3a;
 }
 .navbar__nav > li:hover ul {
   display: block;
@@ -355,7 +355,7 @@ html {
 .formArticle__legend, .formAuth__legend, .formContact__legend {
   padding: 0.2em;
   color: #303030;
-  background-color: #90b644;
+  background-color: #51aa3a;
 }
 .formArticle__error, .formAuth__error, .formContact__error {
   font-size: calc(0.5em + 0.5vw);
