@@ -1,3 +1,6 @@
 vendor/
 node_modules/
 .sass-cache
+Dockerfile
+docker-compose.yml
+apache-conf

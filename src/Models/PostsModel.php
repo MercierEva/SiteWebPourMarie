@@ -51,9 +51,9 @@ class PostsModel extends Model {
                     $cat = "A propos";
             }
             $queryInstance = DatabaseManager::getInstance();
-            $this->cat_id = $queryInstance->prepareAndExecuteQuery(
+            $this->cat_id = intval($queryInstance->prepareAndExecuteQuery(
                 'SELECT id FROM tb_categories WHERE name=?', 
-                    array($cat))[0]['id'];
+                    array($cat))[0]['id']);
             return;
         } catch (Exception $e) {
             $msg = $e->getMessage();
