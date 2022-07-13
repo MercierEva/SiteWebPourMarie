@@ -47,8 +47,10 @@ class PostsModel extends Model {
                 case "services":
                     $cat = "Services";
                     break;
-                default: 
-                    $cat = "A propos";
+                case "Welcome":
+                case "Welcome":
+                    $cat = "Welcome";
+                    break;
             }
             $queryInstance = DatabaseManager::getInstance();
             $this->cat_id = intval($queryInstance->prepareAndExecuteQuery(

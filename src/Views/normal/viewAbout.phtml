@@ -1,11 +1,14 @@
+<h2 class="title">Qui suis-je ?</h2>
 <?php if (isset($articles) && !empty($articles)): ?>
 <section class="about">
-    <?php if (isset($articles[0]['postSrc'])): ?>
-    <img src="<?php echo htmlentities($articles[0]['postSrc']) ?>" alt="<?= htmlentities($articles[0]['postImgName'])?>" />
-    <?php endif; ?>
+<?php foreach($articles as $index => $article): ?>
     <article>
-        <?= $articles[0]['postCont'] ?>
+        <?= $article['postCont'] ?>  
+        <?php if (isset($article['postSrc'])): ?>
+            <img src="<?php echo htmlentities($article['postSrc']) ?>" alt="<?= htmlentities($article['postImgName'])?>" />
+        <?php endif; ?>
     </article>
+<?php endforeach; ?>
 </section>
 <?php endif; ?>
 
