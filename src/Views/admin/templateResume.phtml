@@ -1,7 +1,8 @@
-<h2 class="title">Le contenu pour la rubrique des 
+<h2 class="title">Le contenu pour la rubrique 
 <?php switch(substr($_GET['q'], 0, -5)): case "test": ?>
-témoignages<?php break; ?><?php case "about": ?>à propos<?php break; ?>
-<?php default: ?>services<?php endswitch; ?></h2>
+des témoignages<?php break; ?><?php case "about": ?>des à propos<?php break; ?>
+<?php case "welcome": ?>de la page d'accueil<?php break; ?>
+<?php default: ?>des services<?php endswitch; ?></h2>
 <p class="add"><a href="index.php?action=auth&q=<?= $_GET["q"]?>&opt=addArticle">Ajouter du contenu</a></p>
 <table class="content" id="table">
     <thead>

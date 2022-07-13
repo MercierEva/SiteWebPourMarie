@@ -47,7 +47,7 @@ class PostsModel extends Model {
                 case "services":
                     $cat = "Services";
                     break;
-                case "Welcome":
+                case "welcome":
                 case "Welcome":
                     $cat = "Welcome";
                     break;
