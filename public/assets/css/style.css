@@ -139,6 +139,7 @@ p {
 
 .footer {
   background-color: #A6FF6E;
+  font-size: 1.3em;
 }
 .footer__contact {
   display: flex;
