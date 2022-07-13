@@ -202,6 +202,7 @@ p {
   align-items: center;
   background-color: #6bcd6d;
   color: #303030;
+  font-weight: bold;
 }
 .navbar__btn {
   position: absolute;
