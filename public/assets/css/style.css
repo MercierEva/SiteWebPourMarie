@@ -139,7 +139,7 @@ p {
 
 .footer {
   background-color: #A6FF6E;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .footer__contact {
   display: flex;
@@ -204,7 +204,7 @@ p {
   background-color: #6bcd6d;
   color: #303030;
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 .navbar__btn {
   position: absolute;
