@@ -528,6 +528,7 @@ p {
   width: 90vw;
   margin: auto;
   text-align: justify;
+  padding: 1em;
 }
 @media (min-width: 768px) {
   .about {
