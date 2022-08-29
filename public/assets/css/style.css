@@ -43,7 +43,7 @@ p {
   justify-content: space-around;
   padding: 1em;
   max-width: 100%;
-  background-color: #996eff;
+  background-color: #A6FF6E;
 }
 
 .page {
@@ -78,9 +78,9 @@ p {
 
 .header__button {
   margin-left: 80%;
-  border: 1px solid #996eff;
+  border: 1px solid #A6FF6E;
   border-radius: 2px;
-  background-color: #996eff;
+  background-color: #A6FF6E;
 }
 .header__button a {
   text-decoration: none;
@@ -138,7 +138,7 @@ p {
 }
 
 .footer {
-  background-color: #996eff;
+  background-color: #A6FF6E;
   font-size: 1.2em;
 }
 .footer__contact {
@@ -288,7 +288,7 @@ p {
   background-color: gray;
 }
 .navbar__nav > li:hover a {
-  color: #996eff;
+  color: #A6FF6E;
 }
 .navbar__nav > li:hover ul {
   display: block;
@@ -326,14 +326,14 @@ p {
   display: flex;
   flex-direction: column;
   flex-basis: 10em;
-  border: 1px solid #6D3E9B;
+  border: 1px solid #E28FE5;
   border-radius: 5px;
   margin: 1em;
   text-decoration: none;
   justify-content: space-around;
   text-align: center;
   color: #303030;
-  background-color: #6D3E9B;
+  background-color: #E28FE5;
 }
 .pageAdmin__option a p {
   margin: 1em;
@@ -349,7 +349,7 @@ p {
   font-family: "Arial Narrow", Arial, sans-serif;
   font-size: calc(1em + 0.5vw);
   color: #303030;
-  background-color: #6D3E9B;
+  background-color: #E28FE5;
   border-radius: 2px;
   padding: 1em;
   margin: 1em auto;
@@ -362,7 +362,7 @@ p {
 .formArticle__legend, .formAuth__legend, .formContact__legend {
   padding: 0.2em;
   color: #303030;
-  background-color: #996eff;
+  background-color: #A6FF6E;
 }
 .formArticle__error, .formAuth__error, .formContact__error {
   font-size: calc(0.5em + 0.5vw);
@@ -492,7 +492,7 @@ p {
 }
 
 .card {
-  border: 1px solid #6D3E9B;
+  border: 1px solid #E28FE5;
   border-radius: 1px;
   background-color: #B48EAD;
   width: 100%;
@@ -526,7 +526,7 @@ p {
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
-  background-color: #6D3E9B;
+  background-color: #E28FE5;
   border-radius: 1px;
   width: 90vw;
   margin: auto;
@@ -556,7 +556,7 @@ p {
 .test {
   display: flex;
   flex-direction: column;
-  background-color: #6D3E9B;
+  background-color: #E28FE5;
   border-radius: 1px;
   width: 90vw;
   margin: auto;
