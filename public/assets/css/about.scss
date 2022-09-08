@@ -8,6 +8,7 @@
     margin: auto;
     text-align: justify;
     padding: 1em;
+    font-size: 1.2em;
     
     @include screen-min($tablet-width) {
         flex-direction: row;

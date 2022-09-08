@@ -493,7 +493,7 @@
   background-color: #B48EAD;
   width: 100%;
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 .card ul {
   list-style-type: square;
@@ -529,6 +529,7 @@
   margin: auto;
   text-align: justify;
   padding: 1em;
+  font-size: 1.2em;
 }
 @media (min-width: 768px) {
   .about {
@@ -558,6 +559,7 @@
   width: 90vw;
   margin: auto;
   text-align: justify;
+  font-size: 1.2em;
 }
 @media (min-width: 768px) {
   .test {

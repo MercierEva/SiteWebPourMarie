@@ -6,6 +6,7 @@
     width: 90vw;
     margin: auto;
     text-align: justify;
+    font-size: 1.2em;
 
     @include screen-min($tablet-width) {
         width: 90vw;
