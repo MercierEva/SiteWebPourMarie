@@ -461,6 +461,7 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
+  font-size: 1.2em;
 }
 @media (min-width: 768px) {
   .intro {
@@ -492,6 +493,7 @@
   background-color: #B48EAD;
   width: 100%;
   margin: 0;
+  font-size: 1.2em;
 }
 .card ul {
   list-style-type: square;
