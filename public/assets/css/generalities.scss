@@ -16,19 +16,13 @@
 
 .container {
     max-width: 100%;
+    height: auto;
     margin: 0;
-    font-size: 1.5em;
+    font-size: 1.3em;
 
     font-family: $font-family;
 
     background-color: $bg-color;
-}
-
-.main {
-    max-width: 100%;
-    height: auto;
-
-    background-color: $purple-dark;
 }
 
 .header{
