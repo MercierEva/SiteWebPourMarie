@@ -18,11 +18,14 @@
     max-width: 100%;
     height: auto;
     margin: 0;
-    font-size: 1.2em;
 
     font-family: $font-family;
 
     background-color: $bg-color;
+}
+
+.main p {
+    font-size: 1.2em;
 }
 
 .header{

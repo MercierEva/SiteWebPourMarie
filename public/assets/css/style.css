@@ -23,9 +23,12 @@
   max-width: 100%;
   height: auto;
   margin: 0;
-  font-size: 1.2em;
   font-family: "Arial Narrow", Arial, sans-serif;
   background-color: #FC9FFF;
+}
+
+.main p {
+  font-size: 1.2em;
 }
 
 .header {
