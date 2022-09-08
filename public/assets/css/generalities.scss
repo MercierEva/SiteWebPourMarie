@@ -17,12 +17,18 @@
 .container {
     max-width: 100%;
     margin: 0;
-    height: auto;
     font-size: 1.5em;
 
     font-family: $font-family;
 
     background-color: $bg-color;
+}
+
+.main {
+    max-width: 100%;
+    height: auto;
+
+    background-color: $purple-dark;
 }
 
 .header{
