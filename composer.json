@@ -8,5 +8,8 @@
     },
     "require": {
         "tinymce/tinymce": "^6.0"
+    },
+	"require-dev": {
+        "heroku/heroku-buildpack-php": "*"
     }
 }
